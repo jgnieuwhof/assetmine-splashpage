@@ -1,8 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider } from "emotion-theming";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import "./index.css";
+import theme from "./common/theme";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
+
+const ContextProvider = ({ children }) => (
+  <ThemeProvider {...{ theme }}>{children}</ThemeProvider>
+);
+
+ReactDOM.render(
+  <ContextProvider>
+    <App />
+  </ContextProvider>,
+  document.getElementById("root")
+);
 registerServiceWorker();
